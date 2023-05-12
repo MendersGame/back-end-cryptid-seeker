@@ -24,7 +24,8 @@ const sightingSchema = new Schema(
       required: true,
     },
     comments: [commentSchema],
-    author: { type: Schema.Types.ObjectId, ref: 'Profile' }
+    author: { type: Schema.Types.ObjectId, ref: 'Profile' },
+    cryptid: { type: Schema.Types.ObjectId, ref: 'Cryptid' }
   },
   { timestamps: true }
 )
