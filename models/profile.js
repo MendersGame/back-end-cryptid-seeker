@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { Sighting } from './sighting'
+
 
 const Schema = mongoose.Schema
 
