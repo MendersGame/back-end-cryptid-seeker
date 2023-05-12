@@ -12,8 +12,6 @@ const cryptidSchema = new Schema(
       type: String,
       required: true,
     },
-    comments: [commentSchema],
-    author: { type: Schema.Types.ObjectId, ref: 'Profile' }
   },
   { timestamps: true }
 )
