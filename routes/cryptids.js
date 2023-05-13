@@ -14,5 +14,6 @@ router.get('/', checkAuth, cryptidsCtrl.index)
 router.get('/:cryptidId', checkAuth, cryptidsCtrl.show)
 router.put('/:cryptidId', checkAuth, cryptidsCtrl.update)
 router.delete('/:cryptidId', checkAuth, cryptidsCtrl.delete)
+router.post('/:cryptidId/reviews' , checkAuth , cryptidsCtrl.createReview)
 
 export { router }

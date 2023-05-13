@@ -1,4 +1,5 @@
 import { Cryptid } from "../models/cryptid.js";
+import { Profile } from "../models/profile.js";
 
 async function create(req, res) {
   try {
@@ -57,10 +58,31 @@ async function deleteCryptid(req, res) {
   }
 }
 
+async function createReview(req, res) {
+  try {
+    req.body.author = req.user.profile
+    const cryptid = await Cryptid.findById(req.params.cyrptidId)
+    console.log(req.body);
+    cryptid.reviews.push(req.body)
+    await cryptid.save()
+      //Find the New Review
+    const newReview = cryptid.reviews[cryptid.reviews.length-1]
+    
+    const profile = await Profile.findById(req.user.profile)
+    newReview.author = profile
+
+    res.status(201).json(newReview)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export { 
   create,
   index,
   show,
   update,
   deleteCryptid as delete,
+  createReview
 }
