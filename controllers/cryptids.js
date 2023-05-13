@@ -56,23 +56,23 @@ async function update(req, res) {
 }
 
 //todo come back later to impelement delete functionality
-// async function deleteCryptid(req, res) {
-//   try {
-//     const cryptid = await Cryptid.findByIdAndDelete(req.params.cryptidId)
-//     const profile = await Profile.findById(req.user.profile)
-//     profile.cryptids.remove({_id: req.params.cryptidId })
-//     await profile.save()
-//     res.status(200).json(cryptid)
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json(error)
-//   }
-// }
+async function deleteCryptid(req, res) {
+  try {
+    const cryptid = await Cryptid.findByIdAndDelete(req.params.cryptidId)
+    const profile = await Profile.findById(req.user.profile)
+    profile.cryptids.remove({_id: req.params.cryptidId })
+    await profile.save()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
 
 export { 
   create,
   index,
   show,
   update,
-  // deleteCryptid as delete,
+  deleteCryptid as delete,
 }
