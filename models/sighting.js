@@ -1,17 +1,17 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const commentSchema = new Schema(
   {
     text: {
       type: String,
-      required: true
+      required: true,
     },
-    author: { type: Schema.Types.ObjectId, ref: 'Profile' }
+    author: { type: Schema.Types.ObjectId, ref: "Profile" },
   },
   { timestamps: true }
-)
+);
 
 const sightingSchema = new Schema(
   {
@@ -24,11 +24,11 @@ const sightingSchema = new Schema(
       required: true,
     },
     comments: [commentSchema],
-    author: { type: Schema.Types.ObjectId, ref: 'Profile' },
-    cryptid: { type: Schema.Types.ObjectId, ref: 'Cryptid' }
+    author: { type: Schema.Types.ObjectId, ref: "Profile" },
+    cryptid: { type: Schema.Types.ObjectId, ref: "Cryptid" },
   },
   { timestamps: true }
-)
-const Sighting = mongoose.model('Sighting', sightingSchema)
+);
+const Sighting = mongoose.model("Sighting", sightingSchema);
 
-export { Sighting }
+export { Sighting };

@@ -1,6 +1,18 @@
-import mongoose from 'mongoose'
+import { text } from "express";
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
+
+const reviewSchema = new Schema(
+  {
+    text: { 
+      type: String,
+      required: true 
+      },
+    author: { type: Schema.Types.ObjectId, ref: "Profile" },
+  },
+  { timestamps: true }
+);
 
 const cryptidSchema = new Schema(
   {
@@ -20,10 +32,11 @@ const cryptidSchema = new Schema(
       type: String,
       required: true,
     },
-    cryptid: { type: Schema.Types.ObjectId, ref: 'Cryptid' }
+    cryptid: { type: Schema.Types.ObjectId, ref: "Cryptid" },
+    reviews: { reviewSchema },
   },
   { timestamps: true }
-)
-const Cryptid = mongoose.model('cryptid', cryptidSchema)
+);
+const Cryptid = mongoose.model("cryptid", cryptidSchema);
 
-export { Cryptid }
+export { Cryptid };
