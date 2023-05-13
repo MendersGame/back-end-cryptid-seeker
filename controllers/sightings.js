@@ -43,7 +43,12 @@ async function show(req, res) {
 
 async function update(req, res) {
   try {
-
+    const sighting = await Sighting.findByIdAndUpdate(
+      req.params.sightingId, 
+      req.body, 
+      { new: true }
+    ).populate('author')
+    res.status(200).json(sighting)
   } catch (error) {
     console.log(error);
     res.status(500).json(error)
