@@ -57,7 +57,11 @@ async function update(req, res) {
 
 async function deleteSighting(req, res) {
   try {
-
+    const sighting = await Sighting.findByIdAndDelete(req.params.sightingId)
+    const profile = await Profile.findById(req.user.profile)
+    profile.sightings.remove({_id: req.params.sightingId })
+    await profile.save()
+    res.status(200).json(sighting)
   } catch (error) {
     console.log(error);
     res.status(500).json(error)
