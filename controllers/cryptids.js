@@ -62,11 +62,12 @@ async function createReview(req, res) {
   try {
     req.body.author = req.user.profile
     const cryptid = await Cryptid.findById(req.params.cyrptidId)
+    console.log(req.body);
     cryptid.reviews.push(req.body)
     await cryptid.save()
       //Find the New Review
     const newReview = cryptid.reviews[cryptid.reviews.length-1]
-
+    
     const profile = await Profile.findById(req.user.profile)
     newReview.author = profile
 

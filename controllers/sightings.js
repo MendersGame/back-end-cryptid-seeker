@@ -79,7 +79,7 @@ async function createComment(req, res) {
 
     const profile = await Profile.findById(req.user.profile)
     newComment.author = profile
-
+    
     res.status(201).json(newComment)
   } catch (error) {
     console.log(error);
