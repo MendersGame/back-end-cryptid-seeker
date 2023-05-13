@@ -32,7 +32,9 @@ async function index(req, res) {
 
 async function show(req, res) {
   try {
-
+    const sighting = await Sighting.findById(req.params.sightingId)
+      .populate(['author', 'comments.author'])
+    res.status(200).json(sighting)
   } catch (error) {
     console.log(error);
     res.status(500).json(error)

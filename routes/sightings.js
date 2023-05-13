@@ -12,6 +12,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, sightingsCtrl.create)
 router.get('/', checkAuth, sightingsCtrl.index)
+router.get('/:sightingId', checkAuth, sightingsCtrl.show)
 
 
 export { router }
