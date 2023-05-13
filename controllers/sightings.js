@@ -18,5 +18,59 @@ async function create(req, res) {
   }
 }
 
+async function index(req, res) {
+  try {
+    const sighting = await Sighting.find({})
+    .populate('author')
+    .sort({createdAt: 'desc'})
+    res.status(200).json(sightings)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
 
-export { create }
+async function show(req, res) {
+  try {
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+async function update(req, res) {
+  try {
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+async function deleteSighting(req, res) {
+  try {
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+async function createComment(req, res) {
+  try {
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+export { 
+  create,
+  index,
+  show,
+  update,
+  deleteSighting as delete,
+  createComment,
+}
