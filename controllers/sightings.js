@@ -23,7 +23,7 @@ async function index(req, res) {
     const sighting = await Sighting.find({})
     .populate('author')
     .sort({createdAt: 'desc'})
-    res.status(200).json(sightings)
+    res.status(200).json(sighting)
   } catch (error) {
     console.log(error)
     res.status(500).json(error)
