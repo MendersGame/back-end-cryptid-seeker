@@ -20,7 +20,6 @@ const cryptidSchema = new Schema(
       type: String,
       required: true,
     },
-    author: { type: Schema.Types.ObjectId, ref: 'Profile' },
     cryptid: { type: Schema.Types.ObjectId, ref: 'Cryptid' }
   },
   { timestamps: true }
