@@ -12,6 +12,16 @@ const cryptidSchema = new Schema(
       type: String,
       required: true,
     },
+    region: {
+      type: String,
+      required: true,
+    },
+    photo: {
+      type: String,
+      required: true,
+    },
+    author: { type: Schema.Types.ObjectId, ref: 'Profile' },
+    cryptid: { type: Schema.Types.ObjectId, ref: 'Cryptid' }
   },
   { timestamps: true }
 )
