@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const profileSchema = new Schema({
   name: String,
   photo: String,
-  Sightings: [{ type: Schema.Types.ObjectId, ref: 'Sighting'}]
+  sightings: [{ type: Schema.Types.ObjectId, ref: 'Sighting'}]
 },{
   timestamps: true,
 })
