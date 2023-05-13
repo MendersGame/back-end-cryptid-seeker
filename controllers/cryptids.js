@@ -1,16 +1,9 @@
-import { Profile } from "../models/profile.js";
 import { Cryptid } from "../models/cryptid.js";
 
 async function create(req, res) {
   try {
     req.body.author = req.user.profile;
     const cryptid = await Cryptid.create(req.body);
-    // const profile = await Profile.findByIdAndUpdate(
-    //   req.user.profile,
-    //   { $push: { cryptids: cryptid } },
-    //   { new: true }
-    // )
-    // cryptid.author = profile
     res.status(201).json(cryptid)
   } catch (error) {
     console.log(error)
@@ -21,7 +14,6 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     const cryptid = await Cryptid.find({})
-    // .populate('author')
     .sort({createdAt: 'desc'})
     res.status(200).json(cryptid)
   } catch (error) {
@@ -33,7 +25,6 @@ async function index(req, res) {
 async function show(req, res) {
   try {
     const cryptid = await Cryptid.findById(req.params.cryptidId)
-      // .populate(['author'])
     res.status(200).json(cryptid)
   } catch (error) {
     console.log(error);
@@ -48,26 +39,12 @@ async function update(req, res) {
       req.body, 
       { new: true }
     )
-    // .populate('author')
     res.status(200).json(cryptid)
   } catch (error) {
     console.log(error);
     res.status(500).json(error)
   }
 }
-
-//todo come back later to impelement delete functionality
-// async function deleteCryptid(req, res) {
-//   try {
-//     const cryptid = await Cryptid.findByIdAndDelete(req.params.cryptidId)
-//     cryptid.remove({_id: req.params.cryptidId })
-//     await cryptid.save()
-//     res.status(200).json(cryptid)
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json(error)
-//   }
-// }
 
 async function deleteCryptid(req, res) {
   try {
