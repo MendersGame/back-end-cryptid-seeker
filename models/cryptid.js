@@ -33,6 +33,7 @@ const cryptidSchema = new Schema(
     },
     cryptid: { type: Schema.Types.ObjectId, ref: "Cryptid" },
     reviews:  [reviewSchema],
+    
   },
   { timestamps: true }
 );
