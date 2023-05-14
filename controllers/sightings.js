@@ -1,16 +1,25 @@
 import { Profile } from "../models/profile.js";
 import { Sighting } from "../models/sighting.js";
+import { Cryptid } from "../models/cryptid.js";
 
 async function create(req, res) {
   try {
     req.body.author = req.user.profile;
+    req.body.cryptid = req.Cryptid._id
     const sighting = await Sighting.create(req.body);
     const profile = await Profile.findByIdAndUpdate(
       req.user.profile,
       { $push: { sightings: sighting } },
       { new: true }
     )
+    const cryptid = await Cryptid.findByIdAndUpdate(
+      req.Cryptid._id,
+      { $push: { sightings: sighting} },
+      { new: true }
+    )
+
     sighting.author = profile
+    sighting.cryptid = cryptid
     res.status(201).json(sighting)
   } catch (error) {
     console.log(error)
