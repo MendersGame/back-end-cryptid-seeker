@@ -79,11 +79,21 @@ async function createReview(req, res) {
   }
 }
 
+async function updateReview(req, res) {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export { 
   create,
   index,
   show,
   update,
   deleteCryptid as delete,
-  createReview
+  createReview,
+  updateReview
 }
