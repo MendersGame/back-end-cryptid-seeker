@@ -31,7 +31,6 @@ const cryptidSchema = new Schema(
       type: String,
       required: true,
     },
-    cryptid: { type: Schema.Types.ObjectId, ref: "Cryptid"},
     reviews:  [reviewSchema],
     sightings: [{ type: Schema.Types.ObjectId, ref: "Sighting" }]
   },

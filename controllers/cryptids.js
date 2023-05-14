@@ -81,7 +81,11 @@ async function createReview(req, res) {
 
 async function updateReview(req, res) {
   try {
-    
+    const cryptid = await Cryptid.findById(req.params.cryptidId)
+    const review = cryptid.reviews.id(req.params.reviewId)
+    review.text = req.body.text
+    await cryptid.save()
+    res.status(200).json(cryptid)
   } catch (error) {
     console.log(error);
     res.status(500).json(error)
