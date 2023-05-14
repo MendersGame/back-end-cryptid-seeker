@@ -31,7 +31,6 @@ async function create(req, res) {
       { $push: { sightings: sighting } },
       { new: true }
     )
-    console.log(cryptid.name)
     res.status(201).json(sighting)
   } catch (error) {
     console.log(error)
