@@ -92,6 +92,18 @@ async function updateReview(req, res) {
   }
 }
 
+async function deleteReview(req, res) {
+  try {
+    const cryptid = await Cryptid.findById(req.params.cryptidId)
+    cryptid.reviews.remove({ _id: req.params.reviewId })
+    await cryptid.save()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export { 
   create,
   index,
@@ -99,5 +111,6 @@ export {
   update,
   deleteCryptid as delete,
   createReview,
-  updateReview
+  updateReview,
+  deleteReview,
 }
