@@ -79,11 +79,38 @@ async function createReview(req, res) {
   }
 }
 
+async function updateReview(req, res) {
+  try {
+    const cryptid = await Cryptid.findById(req.params.cryptidId)
+    const review = cryptid.reviews.id(req.params.reviewId)
+    review.text = req.body.text
+    await cryptid.save()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+async function deleteReview(req, res) {
+  try {
+    const cryptid = await Cryptid.findById(req.params.cryptidId)
+    cryptid.reviews.remove({ _id: req.params.reviewId })
+    await cryptid.save()
+    res.status(200).json(cryptid)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export { 
   create,
   index,
   show,
   update,
   deleteCryptid as delete,
-  createReview
+  createReview,
+  updateReview,
+  deleteReview,
 }
