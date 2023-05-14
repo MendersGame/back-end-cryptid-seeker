@@ -61,7 +61,8 @@ async function deleteCryptid(req, res) {
 async function createReview(req, res) {
   try {
     req.body.author = req.user.profile
-    const cryptid = await Cryptid.findById(req.params.cyrptidId)
+    const cryptid = await Cryptid.findById(req.params.cryptidId)
+    console.log(cryptid);
     console.log(req.body);
     cryptid.reviews.push(req.body)
     await cryptid.save()
