@@ -20,7 +20,7 @@ const memberSchema = new Schema(
       type: String,
       required: true,
     },
-  },
+  }, { timestamps: true },
 );
 
 const TeamMember = memberSchema.model("member", memberSchema)
