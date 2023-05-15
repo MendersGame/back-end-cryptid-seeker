@@ -1,4 +1,4 @@
-import { TeamMember } from "../models/teamMember"
+import { TeamMember } from "../models/teamMember.js"
 
 async function create(req, res) {
   try {
@@ -24,10 +24,10 @@ async function index(req, res) {
 
 async function update(req, res) {
   try {
+    console.log(req.body);
     const teamMember = await TeamMember.findByIdAndUpdate(
       req.params.teamMemberId, 
-      req.body, 
-      { new: true }
+      req.body, { new: true }
     )
     res.status(200).json(teamMember)
   } catch (error) {
