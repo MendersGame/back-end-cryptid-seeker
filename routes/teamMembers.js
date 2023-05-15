@@ -11,5 +11,6 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, memberCtrl.create)
 router.get('/', checkAuth, memberCtrl.index)
+router.delete('/:teamMemberId', checkAuth, memberCtrl.delete)
 
 export { router }

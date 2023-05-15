@@ -22,8 +22,19 @@ async function index(req, res) {
   }
 }
 
+async function deleteMember(req, res) {
+  try {
+    const teamMember = await TeamMember.findByIdAndDelete(req.params.teamMemberId)
+    await teamMember.save()
+    res.status(200).json(teamMember)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
-  
+  deleteMember as delete,
 }
