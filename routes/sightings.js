@@ -17,6 +17,6 @@ router.put('/:sightingId', checkAuth, sightingsCtrl.update)
 router.delete('/:sightingId', checkAuth, sightingsCtrl.delete)
 router.post('/:sightingId/comments' , checkAuth , sightingsCtrl.createComment)
 router.put('/:sightingId/comments/:commentId', checkAuth, sightingsCtrl.updateComment)
-
+router.delete('/:sightingId/comments/:commentId', checkAuth, sightingsCtrl.deleteComment)
 
 export { router }
