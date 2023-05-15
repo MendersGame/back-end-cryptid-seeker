@@ -12,5 +12,6 @@ router.use(decodeUserFromToken)
 router.post('/', checkAuth, memberCtrl.create)
 router.get('/', checkAuth, memberCtrl.index)
 router.delete('/:teamMemberId', checkAuth, memberCtrl.delete)
+router.put('/:teamMemberId', checkAuth, memberCtrl.update)
 
 export { router }
