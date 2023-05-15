@@ -108,6 +108,31 @@ async function createComment(req, res) {
   }
 }
 
+async function updateComment(req, res) {
+  try {
+    const sighting = await Sighting.findById(req.params.sightingId)
+    const comment = sighting.comments.id(req.params.commentId)
+    comment.text = req.body.text
+    await sighting.save()
+    res.status(200).json(sighting)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
+async function deleteComment(req, res) {
+  try {
+    const sighting = await Sighting.findById(req.params.sightingId)
+    sighting.comments.remove({ _id: req.params.commentId})
+    await sighting.save()
+    res.status(200).json(sighting)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error)
+  }
+}
+
 export { 
   create,
   index,
@@ -115,4 +140,6 @@ export {
   update,
   deleteSighting as delete,
   createComment,
+  updateComment,
+  deleteComment,
 }
