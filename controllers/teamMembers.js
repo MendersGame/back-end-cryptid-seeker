@@ -1,4 +1,4 @@
-import { TeamMember } from "../models/teamMember"
+import { TeamMember } from "../models/teamMember.js"
 
 async function create(req, res) {
   try {
