@@ -23,6 +23,6 @@ const memberSchema = new Schema(
   }, { timestamps: true },
 );
 
-const TeamMember = mongoose.model("member", memberSchema)
+const TeamMember = mongoose.model("teamMember", memberSchema)
 
 export { TeamMember }
