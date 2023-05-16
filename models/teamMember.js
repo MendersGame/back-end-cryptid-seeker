@@ -20,7 +20,7 @@ const memberSchema = new Schema(
       type: String,
       required: true,
     },
-  }, { timestamps: true },
+  }, { timestamps: true }
 );
 
 const TeamMember = mongoose.model("teamMember", memberSchema)

@@ -38,4 +38,4 @@ const cryptidSchema = new Schema(
 );
 const Cryptid = mongoose.model("cryptid", cryptidSchema);
 
-export { Cryptid };
+export { Cryptid }
