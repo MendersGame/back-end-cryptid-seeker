@@ -6,12 +6,11 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-
+router.get('/', sightingsCtrl.index)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, sightingsCtrl.create)
-router.get('/', checkAuth, sightingsCtrl.index)
 router.get('/:sightingId', checkAuth, sightingsCtrl.show)
 router.put('/:sightingId', checkAuth, sightingsCtrl.update)
 router.delete('/:sightingId', checkAuth, sightingsCtrl.delete)
