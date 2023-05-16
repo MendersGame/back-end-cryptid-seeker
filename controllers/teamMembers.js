@@ -39,9 +39,6 @@ async function update(req, res) {
 async function deleteMember(req, res) {
   try {
     const teamMember = await TeamMember.findByIdAndDelete(req.params.teamMemberId)
-    console.log('teamMember: ', teamMember)
-    console.log('teamMemberId: ', req.params.teamMemberId)
-    await teamMember.save()
     res.status(200).json(teamMember)
   } catch (error) {
     console.log(error);
