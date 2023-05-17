@@ -38,6 +38,7 @@ async function update(req, res) {
 
 async function deleteMember(req, res) {
   try {
+
     const teamMember = await TeamMember.findById(req.params.teamMemberId);
     console.log('teamMember:', teamMember);
     
