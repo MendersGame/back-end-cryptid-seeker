@@ -5,27 +5,18 @@ import { Cryptid } from "../models/cryptid.js"
 
 async function create(req, res) {
   try {
-    // Find the Cryptid that matches the name passed in the request body
     const cryptid = await Cryptid.findOne({ name: req.body.cryptid })
-
-    // If no matching Cryptid is found, return an error response
     if (!cryptid) {
       return res.status(404).json({ message: 'Cryptid not found' })
     }
-    // Update the request body with the ID of the Cryptid that was found and the ID of the user making the request
     req.body.cryptid = cryptid._id
     req.body.author = req.user.profile
-
-     // Create a new Sighting using the updated request body
     const sighting = await Sighting.create(req.body)
-
-    // Update the user's Profile by adding the newly created Sighting to the "sightings" array
     const profile = await Profile.findByIdAndUpdate(
       req.user.profile,
       { $push: { sightings: sighting } },
       { new: true }
     )
-    // Update the Cryptid that was found by adding the newly created Sighting to the "sightings" array
     await Cryptid.findOneAndUpdate(
       {name: cryptid.name},
       { $push: { sightings: sighting } },
@@ -42,8 +33,8 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     const sighting = await Sighting.find({})
-    .populate('author')
-    .sort({createdAt: 'desc'})
+      .populate('author')
+      .sort({createdAt: 'desc'})
     res.status(200).json(sighting)
   } catch (error) {
     console.log(error)
@@ -95,12 +86,9 @@ async function createComment(req, res) {
     const sighting = await Sighting.findById(req.params.sightingId)
     sighting.comments.push(req.body)
     await sighting.save()
-      //Find the New Comment
     const newComment = sighting.comments[sighting.comments.length-1]
-
     const profile = await Profile.findById(req.user.profile)
     newComment.author = profile
-    
     res.status(201).json(newComment)
   } catch (error) {
     console.log(error)
