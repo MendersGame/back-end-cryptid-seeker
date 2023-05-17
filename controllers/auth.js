@@ -19,17 +19,17 @@ async function signup(req, res) {
 
     const token = createJWT(newUser)
     res.status(200).json({ token })
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.log(err)
     try {
       if (req.body.profile) {
         await Profile.findByIdAndDelete(req.body.profile)
       }
-    } catch (error) {
-      console.log(error)
-      return res.status(500).json({ error: error.message })
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({ err: err.message })
     }
-    res.status(500).json({ error: error.message })
+    res.status(500).json({ err: err.message })
   }
 }
 
@@ -48,8 +48,8 @@ async function login(req, res) {
 
     const token = createJWT(user)
     res.json({ token })
-  } catch (error) {
-    handleAuthError(error, res)
+  } catch (err) {
+    handleAuthError(err, res)
   }
 }
 
@@ -67,20 +67,20 @@ async function changePassword(req, res) {
     const token = createJWT(user)
     res.json({ token })
     
-  } catch (error) {
-    handleAuthError(error, res)
+  } catch (err) {
+    handleAuthError(err, res)
   }
 }
 
 /* --== Helper Functions ==-- */
 
-function handleAuthError(error, res) {
-  console.log(error)
-  const { message } = error
+function handleAuthError(err, res) {
+  console.log(err)
+  const { message } = err
   if (message === 'User not found' || message === 'Incorrect password') {
-    res.status(401).json({ error: message })
+    res.status(401).json({ err: message })
   } else {
-    res.status(500).json({ error: message })
+    res.status(500).json({ err: message })
   }
 }
 

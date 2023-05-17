@@ -38,13 +38,23 @@ async function update(req, res) {
 
 async function deleteMember(req, res) {
   try {
-    const teamMember = await TeamMember.findByIdAndDelete(req.params.teamMemberId)
-    res.status(200).json(teamMember)
+
+    const teamMember = await TeamMember.findById(req.params.teamMemberId);
+    console.log('teamMember:', teamMember);
+    
+    // Save a copy of the teamMember before removal
+    const deletedTeamMember = await teamMember.save();
+
+    await teamMember.remove();
+    console.log('Deleted teamMember:', deletedTeamMember);
+    
+    res.status(200).json(deletedTeamMember);
   } catch (error) {
     console.log(error);
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
 }
+
 
 export {
   create,
