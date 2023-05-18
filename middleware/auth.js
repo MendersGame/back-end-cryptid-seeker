@@ -16,7 +16,6 @@ const decodeUserFromToken = (req, res, next) => {
 }
 
 function checkAuth(req, res, next) {
-  console.log('CheckAuth')
   return req.user ? next() : res.status(401).json({ err: 'Not Authorized' })
 }
 
