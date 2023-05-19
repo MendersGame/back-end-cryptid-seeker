@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const commentSchema = new Schema(
   {
@@ -31,4 +31,4 @@ const sightingSchema = new Schema(
 );
 const Sighting = mongoose.model("Sighting", sightingSchema);
 
-export { Sighting };
+export { Sighting }
