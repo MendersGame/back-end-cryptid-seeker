@@ -1,10 +1,10 @@
-import { Cryptid } from "../models/cryptid.js";
-import { Profile } from "../models/profile.js";
+import { Cryptid } from '../models/cryptid.js'
+import { Profile } from '../models/profile.js'
 
 async function create(req, res) {
   try {
-    req.body.author = req.user.profile;
-    const cryptid = await Cryptid.create(req.body);
+    req.body.author = req.user.profile
+    const cryptid = await Cryptid.create(req.body)
     res.status(201).json(cryptid)
   } catch (error) {
     console.log(error)
