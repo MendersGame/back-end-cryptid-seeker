@@ -29,7 +29,7 @@ async function show(req, res) {
     .populate('reviews.author')
     res.status(200).json(cryptid)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }
@@ -43,7 +43,7 @@ async function update(req, res) {
     )
     res.status(200).json(cryptid)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }
@@ -54,7 +54,7 @@ async function deleteCryptid(req, res) {
     await cryptid.save()
     res.status(200).json(cryptid)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }
@@ -70,7 +70,7 @@ async function createReview(req, res) {
     newReview.author = profile
     res.status(201).json(newReview)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }
@@ -83,7 +83,7 @@ async function updateReview(req, res) {
     await cryptid.save()
     res.status(200).json(cryptid)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }
@@ -95,7 +95,7 @@ async function deleteReview(req, res) {
     await cryptid.save()
     res.status(200).json(cryptid)
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).json(error)
   }
 }

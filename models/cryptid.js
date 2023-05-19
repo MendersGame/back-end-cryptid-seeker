@@ -11,7 +11,7 @@ const reviewSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "Profile" },
   },
   { timestamps: true }
-);
+)
 
 const cryptidSchema = new Schema(
   {
