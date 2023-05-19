@@ -2,7 +2,6 @@ import { Router } from 'express'
 import * as sightingsCtrl from '../controllers/sightings.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
-
 const router = Router()
 
 /*---------- Public Routes ----------*/
