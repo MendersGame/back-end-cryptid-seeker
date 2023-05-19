@@ -68,7 +68,6 @@ async function createReview(req, res) {
     const newReview = cryptid.reviews[cryptid.reviews.length-1]
     const profile = await Profile.findById(req.user.profile)
     newReview.author = profile
-    console.log(profile);
     res.status(201).json(newReview)
   } catch (error) {
     console.log(error);
