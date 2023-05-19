@@ -11,7 +11,7 @@ const commentSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref: "Profile" },
   },
   { timestamps: true }
-);
+)
 
 const sightingSchema = new Schema(
   {
@@ -28,7 +28,7 @@ const sightingSchema = new Schema(
     cryptid: { type: Schema.Types.ObjectId, ref: "Cryptid" },
   },
   { timestamps: true }
-);
+)
 const Sighting = mongoose.model("Sighting", sightingSchema);
 
 export { Sighting }
