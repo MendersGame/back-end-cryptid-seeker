@@ -1,7 +1,6 @@
-import { Profile } from "../models/profile.js"
-import { Sighting } from "../models/sighting.js"
-import { Cryptid } from "../models/cryptid.js"
-
+import { Profile } from '../models/profile.js'
+import { Sighting } from '../models/sighting.js'
+import { Cryptid } from '../models/cryptid.js'
 
 async function create(req, res) {
   try {
@@ -28,7 +27,6 @@ async function create(req, res) {
     res.status(500).json(error)
   }
 }
-
 
 async function index(req, res) {
   try {

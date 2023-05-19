@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const reviewSchema = new Schema(
   {
@@ -35,7 +35,8 @@ const cryptidSchema = new Schema(
     sightings: [{ type: Schema.Types.ObjectId, ref: "Sighting" }]
   },
   { timestamps: true }
-);
-const Cryptid = mongoose.model("cryptid", cryptidSchema);
+)
+
+const Cryptid = mongoose.model("cryptid", cryptidSchema)
 
 export { Cryptid }

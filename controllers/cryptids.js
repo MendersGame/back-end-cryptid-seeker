@@ -1,10 +1,10 @@
-import { Cryptid } from "../models/cryptid.js";
-import { Profile } from "../models/profile.js";
+import { Cryptid } from '../models/cryptid.js'
+import { Profile } from '../models/profile.js'
 
 async function create(req, res) {
   try {
-    req.body.author = req.user.profile;
-    const cryptid = await Cryptid.create(req.body);
+    req.body.author = req.user.profile
+    const cryptid = await Cryptid.create(req.body)
     res.status(201).json(cryptid)
   } catch (error) {
     console.log(error)
@@ -68,7 +68,6 @@ async function createReview(req, res) {
     const newReview = cryptid.reviews[cryptid.reviews.length-1]
     const profile = await Profile.findById(req.user.profile)
     newReview.author = profile
-    console.log(profile);
     res.status(201).json(newReview)
   } catch (error) {
     console.log(error);
